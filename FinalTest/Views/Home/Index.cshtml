@@ -1,0 +1,180 @@
+﻿@section Scripts {
+    @Scripts.Render("~/Scripts/skripta.js")
+}
+<div class="container-fluid">
+
+
+    @*Korisnik nije prijavljen na sistem*@
+    <div id="picture1" class="col-12">
+        <div class="row text-center">
+            <h3>Korisnik nije prijavljen na sistem</h3>
+        </div>
+
+        <div class="row text-center">
+            <button id="btnSignIn" style="width:200px; background-color:yellow; color:black; padding:10px; margin:10px"
+                    type="button">
+                Prijava
+            </button>
+        </div>
+        <div class="row text-center">
+            <button id="btnSignUp" type="button" style="width:200px;  padding:10px; margin:10px">Registracija</button>
+        </div>
+    </div>
+
+    @*Registracija korisnika*@
+    <div id="registration">
+
+        <form method="post" action="post/" id="registracija" class="form-horizontal">
+            <div class="row text-center">
+                <h3>Registracija korisnika</h3>
+            </div>
+
+            <div class="row text-center"><label style="width:200px; height:15px; text-align:center;">E-mail adresa:</label></div>
+            <div class="row text-center">
+                <input  style="width:200px; height:25px;" type="text" id="registrationEmail"  />
+            </div>
+
+            <div class="row text-center"><label style="width:200px; height:15px; text-align:center;">Lozinka:</label></div>
+            <div class="row text-center">
+                <input style="width:200px; height:25px;" type="password" id="registrationPassword" />
+            </div>
+
+            <div class="row text-center">
+                <button id="btnRegistration"
+                        style="width:200px; background-color:yellow; color:black; padding:10px; margin:10px"
+                        type="button">
+                    Registracija
+                </button>
+            </div>
+            <div class="row text-center">
+                <button id="btnGiveUp" type="button" style="width:200px; padding:10px; margin:10px">Odustajanje</button>
+            </div>
+        </form>
+    </div>
+
+
+    @*Prijava korisnika*@
+    <div id="signUp">
+        <form method="post" action="post/" id="prijava" class="form-horizontal">
+
+            <div class="row text-center">
+                <h3>Prijava korisnika</h3>
+            </div>
+
+            <div class="row text-center"><label style="width:200px; height:15px; text-align:center;">E-mail adresa:</label></div>
+            <div class="row text-center">
+                
+                <input style="width:200px; height:25px;" type="text" id="signUpEmail" />
+            </div>
+            <div class="row text-center"> <label style="width:200px; height:15px; text-align:center;">Lozinka:</label></div>
+            <div class="row text-center">
+               
+                <input style="width:200px; height:25px;" type="password" id="signUpPassword" />
+
+            </div>
+
+            <div class="row text-center">
+                <button id="btnSign" style="width:200px; background-color:yellow; color:black; padding:10px; margin:10px"
+                        type="button">
+                    Prijava
+                </button>
+            </div>
+
+            <div class="row text-center">
+                <button id="btnStop" type="button" style="width:200px; padding:10px; margin:10px">Odustajanje</button>
+            </div>
+        </form>
+    </div>
+
+    @*Info i pretraga*@
+    <div id="info">
+        <div id="signOut">
+            <div class="row text-center"><label id="infoUser"></label></div>
+            <div class="row text-center">
+                <button style="width:200px; padding:10px; margin:10px; background-color: yellow" id="btnSignOut"
+                        type="button">
+                    Odjava
+                </button>
+            </div>
+        </div>
+
+        <form method="post" action="post/" id="search" class="form-horizontal">
+            <div class="row text-center">
+                <h3>Pretraga zaposlenih po plati:</h3>
+            </div>
+            <div style="margin:10px">
+                <div class="row text-center"><label style="width:200px; text-align:center;">Najmanje:</label></div>
+                <div class="row text-center"><input style="width:200px" type="number" id="najmanje" min="251" max="9998"></div>
+            </div>
+            <div style="margin:10px">
+                <div class="row text-center">
+                    <label style="width:200px; text-align:center;">Najvise:</label>
+                </div>
+                <div class="row text-center">
+                    <input style="width:200px" type="number" id="najvise" min="252" max="9999">
+                </div>
+            </div>
+
+            <div class="row text-center">
+
+                <button type="submit" id="btnSearch"
+                        style="width:200px; background-color:yellow; color:black; padding:10px; margin:10px">
+                    Trazi
+                </button>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@*tabela zaposlenih*@
+
+<div class="container-fluid" id="employees" style="width: 800px;"></div>
+
+
+@*forma za dodavanje novog zaposlenog*@
+<div class="container-fluid" id="formAddEmployee">
+
+    <div class="row text-center"><h2>Dodavanje novog Zaposlenog</h2></div>
+
+    <div class="row text-center"> <label style="width:200px; text-align:center;">Organizaciona jedinica:</label></div>
+
+    <div class="row text-center">
+        <select id="lista" style="width:200px">
+            <option value="" selected disabled hidden>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </option>
+        </select>
+    </div>
+
+    <div class="row text-center"><label style="width:200px; text-align:center;">Rola:</label></div>
+    <div class="row text-center"> <input style="width:200px" type="text" id="role" maxlength="50" required></div>
+
+    <div class="row text-center"><label style="width:200px; text-align:center;">Ime i prezime:</label></div>
+    <div class="row text-center"> <input style="width:200px" type="text" id="name" maxlength="70" required></div>
+
+    <div class="row text-center"><label style="width:200px; text-align:center;">Godina rodjenja:</label></div>
+    <div class="row text-center"> <input style="width:200px" type="number" id="birthYear" min="1960" max="1999"></div>
+
+    <div class="row text-center"><label style="width:200px; text-align:center;">Godina zaposlenja:</label></div>
+    <div class="row text-center"> <input style="width:200px" type="number" id="empYear" min="2010" max="2020" required></div>
+
+    <div class="row text-center"><label style="width:200px; text-align:center;">Plata:</label></div>
+    <div class="row text-center"> <input style="width:200px" type="number" id="sallary" min="251" max="10000" required></div>
+
+    <div class="row text-center">
+        <button type="submit" id="btnAdd"
+                style="width:200px; background-color:yellow; color:black; padding:10px; margin:10px">
+            Dodavanje
+        </button>
+    </div>
+
+    <div class="row text-center">
+        <button type="submit" id="btnQuit"
+                style="width:200px; padding:10px; margin:10px">
+            Odustajanje
+        </button>
+    </div>
+</div>
